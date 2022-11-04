@@ -1,8 +1,10 @@
 using System.Text.Json.Serialization;
 using LearningCenter.API.Mapper;
+using LearningCenter.API.Middleware;
 using LearningCenter.Domain;
 using LearningCenter.Infraestructure;
 using LearningCenter.Infraestructure.Context;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +38,13 @@ builder.Services.AddAutoMapper(
     typeof(ResourceToModel)
 );
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+});
+
 
 var app = builder.Build();
 
@@ -52,6 +61,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.UseHttpsRedirection();
 

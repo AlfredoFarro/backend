@@ -1,6 +1,7 @@
 using System.Net.Mime;
 using System.Security;
 using AutoMapper;
+using LearningCenter.API.Filter;
 using LearningCenter.API.Reponse;
 using LearningCenter.API.Resources;
 using LearningCenter.Domain;
@@ -9,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LearningCenter.API.Controllers;
 
+
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 [Produces(MediaTypeNames.Application.Json)]

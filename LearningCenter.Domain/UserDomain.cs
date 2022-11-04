@@ -29,4 +29,10 @@ public class UserDomain :IUserDomain
     {
         return await _userRepository.Singup(user);
     }
+
+    public async Task<User> GetByUsername(string username)
+    {
+        return  await _userRepository.GetByUsername(username);
+    }
+    
 }

@@ -6,11 +6,13 @@ using AutoMapper;
 using LearningCenter.API.Resources;
 using LearningCenter.Domain;
 using LearningCenter.Infraestructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LearningCenter.API.Controllers
-{
+{ 
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -24,7 +26,8 @@ namespace LearningCenter.API.Controllers
             _mapper = mapper;
         }
         // GET: api/User
-        [HttpPost]
+        [HttpPost] 
+        [AllowAnonymous]
         [Route("Login")]
         public async Task<IActionResult> Login(UserResource userResource)
         { 
@@ -43,6 +46,7 @@ namespace LearningCenter.API.Controllers
             var result = await _userDomain.Signup(user);
             return Ok();
         }
+        
         // GET: api/User
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
