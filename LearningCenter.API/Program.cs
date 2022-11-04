@@ -20,6 +20,7 @@ builder.Services.AddScoped<ICategoryDomain, CategoryDomain>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICategoryRepositoy, CategoryRepository>();
 builder.Services.AddScoped<IUserDomain, UserDomain>();
+builder.Services.AddScoped<ITokenDomain, TokenDomain>();
 
 
 //Conexion a MySQL 
