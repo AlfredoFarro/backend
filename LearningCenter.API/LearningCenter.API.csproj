@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>LearningCenter.API</RootNamespace>
         <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
