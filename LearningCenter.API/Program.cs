@@ -30,7 +30,16 @@ var connectionString = builder.Configuration.GetConnectionString("learningCenter
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
 
 builder.Services.AddDbContext<LearningCentDBContext>(
-    dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
+    dbContextOptions =>
+    {
+        dbContextOptions.UseMySql(connectionString,
+            ServerVersion.AutoDetect(connectionString),
+            options => options.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: System.TimeSpan.FromSeconds(30),
+                errorNumbersToAdd: null)
+        );
+    });
 
 
 builder.Services.AddAutoMapper(
