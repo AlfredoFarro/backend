@@ -22,7 +22,7 @@ public class LearningCentDBContext : DbContext //Base de datos
         if (!optionsBuilder.IsConfigured)
         {
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
-            optionsBuilder.UseMySql("server=localhost;user=root;password=LaUpc123*;database=LearningCenterDB;", serverVersion);
+            optionsBuilder.UseMySql("server=sql10.freemysqlhosting.net;user=sql10550788;password=fVxdKhpXk8;database=sql10550788;", serverVersion);
         }
     }
 
